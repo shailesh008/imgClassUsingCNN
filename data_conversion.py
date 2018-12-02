@@ -17,8 +17,6 @@ testing_data_path = './testing'
 # our images are 80x80x3
 IMG_SIZE = 80 
 
-os.getcwd()
-
 #Converting the output images into one-hot format
 def label_img(img):
     word_label = img.split('_')[0]
@@ -29,7 +27,7 @@ def label_img(img):
     
 
 #function to read  training data images and convert it np array    
-def create_train_data():
+def process_train_data():
     training_data = []
     for img in tqdm(os.listdir(training_data_path)):
         label = label_img(img)
@@ -44,8 +42,7 @@ def create_train_data():
     np.save('train_data.npy', training_data)
     return training_data
 
-
-create_train_data()
+process_train_data()
 
 #function to read test data images and convert it np array
 def process_test_data():
